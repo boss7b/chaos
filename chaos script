@@ -1,0 +1,68 @@
+game.StarterGui:SetCore("SendNotification",  {
+    Title = "i dont own this script i just made it into kavo ui to make it easier to execute";
+    Text = "enjoy";
+    Icon = "rbxassetid://11130181640";
+    Duration = 5;
+    Callback = NotificationBindable;
+   })
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("script hub for chaos boss7b#9210", "DarkTheme")
+
+
+-- MAIN
+local Main = Window:NewTab("MAIN")
+local MainSection = Main:NewSection("MAIN")
+
+
+MainSection:NewButton("gamepass giver", "gives all gamepasses", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/LbashD0N'))() 
+end)
+
+
+MainSection:NewButton("chaos script", "best script for chaos", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/1111-ssss/Chaos_Script/main/Chaos_script.txt'))()
+end)
+
+
+MainSection:NewButton("hitbox expander", "", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/Ef5M6TUq'))() 
+end)
+
+
+--LOCAL PLAYER
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Player")
+
+
+PlayerSection:NewSlider("WalkSpeed", "IM FAST AS HECC BOI", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+
+PlayerSection:NewSlider("JumpPower", "jump high", 350, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+
+PlayerSection:NewButton("restore to default", "restore jump and speed", function()
+    Game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+    Game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+end)
+
+
+PlayerSection:NewToggle("drop tools script", "ToggleInfo", function(state)
+    if state then
+        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
+            if v:IsA("Tool")  then
+             wait(0.1)
+             v.Parent = game.Players.LocalPlayer.Character
+             wait(0.1)
+             v.Parent = game.Workspace
+         end
+         end
+    else
+        print("Toggle Off")
+    end
+end)
